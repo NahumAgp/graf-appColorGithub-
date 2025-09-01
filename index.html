@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker Pro - Selector de Colores RGB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid gradient-bg">
+        <div class="row justify-content-center min-vh-100 align-items-center">
+            <div class="col-xl-8 col-lg-10 col-md-12">
+                <div class="card glass-card">
+                    <div class="card-header gradient-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="text-center mb-0 text-white">
+                                <i class="fas fa-palette me-2"></i>Color Picker Pro
+                            </h3>
+                            <span class="badge bg-light text-dark">RGB/HEX</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <!-- Visualizador de color principal -->
+                        <div class="row mb-4">
+                            <div class="col-12 text-center">
+                                <div class="color-preview-container">
+                                    <div id="color-display" class="color-display">
+                                        <div id="color-code" class="color-code">RGB: 0, 0, 0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Selector de color HTML5 -->
+                        <div class="row mb-4">
+                            <div class="col-12 text-center">
+                                <div class="color-picker-wrapper">
+                                    <label class="form-label section-title">
+                                        <i class="fas fa-eye-dropper me-2"></i>Selector de Color
+                                    </label>
+                                    <input type="color" class="form-control form-control-color" id="color-picker" value="#000000" title="Elige un color">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Controles deslizantes -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h5 class="section-title mb-3">
+                                    <i class="fas fa-sliders-h me-2"></i>Ajustes RGB
+                                </h5>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <div class="control-card red-card">
+                                            <label for="red-slider" class="form-label">
+                                                <i class="fas fa-circle text-danger me-2"></i><strong>Rojo:</strong> <span id="red-value">0</span>
+                                            </label>
+                                            <input type="range" class="form-range slider-custom" id="red-slider" min="0" max="255" value="0">
+                                            <input type="number" class="form-control form-control-sm mt-2" id="red-input" min="0" max="255" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="control-card green-card">
+                                            <label for="green-slider" class="form-label">
+                                                <i class="fas fa-circle text-success me-2"></i><strong>Verde:</strong> <span id="green-value">0</span>
+                                            </label>
+                                            <input type="range" class="form-range slider-custom" id="green-slider" min="0" max="255" value="0">
+                                            <input type="number" class="form-control form-control-sm mt-2" id="green-input" min="0" max="255" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="control-card blue-card">
+                                            <label for="blue-slider" class="form-label">
+                                                <i class="fas fa-circle text-primary me-2"></i><strong>Azul:</strong> <span id="blue-value">0</span>
+                                            </label>
+                                            <input type="range" class="form-range slider-custom" id="blue-slider" min="0" max="255" value="0">
+                                            <input type="number" class="form-control form-control-sm mt-2" id="blue-input" min="0" max="255" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Input RGB combinado -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="control-card">
+                                    <h5 class="section-title mb-3">
+                                        <i class="fas fa-keyboard me-2"></i>Entrada de Texto
+                                    </h5>
+                                    <label class="form-label"><strong>RGB (formato: R,G,B):</strong></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                                        <input type="text" class="form-control" id="rgb-input" placeholder="Ej: 255,128,64">
+                                        <button class="btn btn-primary" type="button" id="apply-rgb-btn">
+                                            <i class="fas fa-check me-1"></i>Aplicar
+                                        </button>
+                                    </div>
+                                    <small class="form-text text-muted">Ingresa valores entre 0-255 separados por comas</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Código hexadecimal -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="control-card">
+                                    <h5 class="section-title mb-3">
+                                        <i class="fas fa-code me-2"></i>Código Hexadecimal
+                                    </h5>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
+                                        <input type="text" class="form-control text-center code-output" id="hex-code" value="#000000" readonly>
+                                        <button class="btn btn-success" type="button" id="copy-btn">
+                                            <i class="fas fa-copy me-1"></i>Copiar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer text-center gradient-footer">
+                        <small class="text-white">© 2024 Color Picker Pro - Herramienta de diseño RGB/HEX</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
